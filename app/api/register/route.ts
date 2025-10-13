@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
     const formData = new URLSearchParams()
     formData.append("_token", "oCqwAglu4VySDRcwWNqj81UMfbKHCS2vWQfARkzu")
     formData.append("status", body.status || "0")
-    formData.append("father", body.father || "110956")
+    formData.append("father", body.father || "15354112082025084547")
     formData.append("type", body.type || "Recorrente")
     formData.append("cpf", body.cpf || "")
     formData.append("birth", body.birth || "")

@@ -12,7 +12,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
 import ErrorModal from "@/components/error-modal"
 
-const REFERRAL_ID = "110956" // Seu ID de indicação
+const REFERRAL_ID = "15354112082025084547" // Seu ID de indicação
 
 const BRAZILIAN_STATES = [
   { value: "AC", label: "Acre" },

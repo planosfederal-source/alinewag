@@ -13,7 +13,7 @@ Sistema de cadastro e pagamento para a Federal Associados com integração de pa
   - PIX (com QR Code)
   - Cartão de Crédito
   - Boleto Bancário
-- ✅ Link de indicação integrado (ID: 110956)
+- ✅ Link de indicação integrado (ID: 15354112082025084547)
 
 ## 🔧 Configuração
 
@@ -60,7 +60,7 @@ Para que o sistema funcione completamente e você receba suas comissões:
 1. **Integração com Federal Associados**
    - Configure a API key da Federal Associados
    - Teste o endpoint de registro
-   - Verifique se o ID de indicação (110956) está sendo enviado corretamente
+   - Verifique se o ID de indicação (15354112082025084547) está sendo enviado corretamente
 
 2. **Configuração do MercadoPago**
    - Crie uma conta no MercadoPago
@@ -92,4 +92,4 @@ Para dúvidas sobre a integração com a Federal Associados:
 
 ## 📄 Licença
 
-Este projeto é privado e destinado ao uso exclusivo do afiliado ID 110956.
+Este projeto é privado e destinado ao uso exclusivo do afiliado ID 15354112082025084547.

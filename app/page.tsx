@@ -7,7 +7,7 @@ export default function Home() {
         <div className="bg-white rounded-lg shadow-xl p-4 sm:p-6 md:p-8">
           <div className="text-center mb-6 md:mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Seja bem-vindo ao Registro de Associados</h1>
-            <p className="text-sm sm:text-base text-gray-700 mt-2 font-medium">Patrocinador: Francisco Eliedisom Dos Santos</p>
+            <p className="text-sm sm:text-base text-gray-700 mt-2 font-medium">Patrocinador: Aline Aparecida Melo</p>
           </div>
           <RegistrationForm />
         </div>
