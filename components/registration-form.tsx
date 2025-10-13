@@ -387,6 +387,78 @@ export default function RegistrationForm() {
   return (
     <>
       <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+        {/* Plano e Chip */}
+        <Card>
+          <CardContent className="pt-4 md:pt-6 px-4 md:px-6">
+            <h2 className="text-lg md:text-xl font-semibold mb-4 md:mb-6">Escolha seu Plano</h2>
+
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label>Tipo de Chip</Label>
+                <RadioGroup
+                  value={formData.typeChip}
+                  onValueChange={(value) => {
+                    handleInputChange("typeChip", value)
+                    handleInputChange("plan_id", "")
+                  }}
+                  className="flex gap-4"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="fisico" id="fisico" />
+                    <Label htmlFor="fisico" className="font-normal cursor-pointer">
+                      Físico
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="eSim" id="eSim-chip" />
+                    <Label htmlFor="eSim-chip" className="font-normal cursor-pointer">
+                      e-SIM
+                    </Label>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="plan">
+                  Plano <span className="text-red-500">*</span>
+                </Label>
+                <Select
+                  value={formData.plan_id}
+                  onValueChange={(value) => handleInputChange("plan_id", value)}
+                  required
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione um plano" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <div className="px-2 py-1.5 text-sm font-semibold pointer-events-none" style={{ color: '#8B5CF6' }}>VIVO</div>
+                    {PLANS.VIVO.map((plan) => (
+                      <SelectItem key={plan.id} value={plan.id} className="text-gray-900 font-medium">
+                        {plan.name} - R$ {plan.price.toFixed(2).replace('.', ',')}
+                      </SelectItem>
+                    ))}
+
+                    <div className="px-2 py-1.5 text-sm font-semibold mt-2 pointer-events-none" style={{ color: '#1E90FF' }}>TIM</div>
+                    {PLANS.TIM.map((plan) => (
+                      <SelectItem key={plan.id} value={plan.id} className="text-gray-900 font-medium">
+                        {plan.name} - R$ {plan.price.toFixed(2).replace('.', ',')}
+                      </SelectItem>
+                    ))}
+
+                    <div className="px-2 py-1.5 text-sm font-semibold mt-2 pointer-events-none" style={{ color: '#DC143C' }}>CLARO</div>
+                    {PLANS.CLARO.map((plan) => (
+                      <SelectItem key={plan.id} value={plan.id} className="text-gray-900 font-medium">
+                        {plan.name} - R$ {plan.price.toFixed(2).replace('.', ',')}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Dados Pessoais */}
         <Card>
           <CardContent className="pt-4 md:pt-6 px-4 md:px-6">
@@ -587,78 +659,6 @@ export default function RegistrationForm() {
                   placeholder="Apto, Bloco, etc"
                 />
               </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Plano e Chip */}
-        <Card>
-          <CardContent className="pt-4 md:pt-6 px-4 md:px-6">
-            <h2 className="text-lg md:text-xl font-semibold mb-4 md:mb-6">Escolha seu Plano</h2>
-
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <Label>Tipo de Chip</Label>
-                <RadioGroup
-                  value={formData.typeChip}
-                  onValueChange={(value) => {
-                    handleInputChange("typeChip", value)
-                    handleInputChange("plan_id", "")
-                  }}
-                  className="flex gap-4"
-                >
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="fisico" id="fisico" />
-                    <Label htmlFor="fisico" className="font-normal cursor-pointer">
-                      Físico
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="eSim" id="eSim-chip" />
-                    <Label htmlFor="eSim-chip" className="font-normal cursor-pointer">
-                      e-SIM
-                    </Label>
-                  </div>
-                </RadioGroup>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="plan">
-                  Plano <span className="text-red-500">*</span>
-                </Label>
-                <Select
-                  value={formData.plan_id}
-                  onValueChange={(value) => handleInputChange("plan_id", value)}
-                  required
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecione um plano" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <div className="px-2 py-1.5 text-sm font-semibold pointer-events-none" style={{ color: '#8B5CF6' }}>VIVO</div>
-                    {PLANS.VIVO.map((plan) => (
-                      <SelectItem key={plan.id} value={plan.id} className="text-gray-900 font-medium">
-                        {plan.name} - R$ {plan.price.toFixed(2).replace('.', ',')}
-                      </SelectItem>
-                    ))}
-
-                    <div className="px-2 py-1.5 text-sm font-semibold mt-2 pointer-events-none" style={{ color: '#1E90FF' }}>TIM</div>
-                    {PLANS.TIM.map((plan) => (
-                      <SelectItem key={plan.id} value={plan.id} className="text-gray-900 font-medium">
-                        {plan.name} - R$ {plan.price.toFixed(2).replace('.', ',')}
-                      </SelectItem>
-                    ))}
-
-                    <div className="px-2 py-1.5 text-sm font-semibold mt-2 pointer-events-none" style={{ color: '#DC143C' }}>CLARO</div>
-                    {PLANS.CLARO.map((plan) => (
-                      <SelectItem key={plan.id} value={plan.id} className="text-gray-900 font-medium">
-                        {plan.name} - R$ {plan.price.toFixed(2).replace('.', ',')}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
             </div>
           </CardContent>
         </Card>
