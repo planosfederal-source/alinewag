@@ -111,11 +111,12 @@ export async function POST(request: NextRequest) {
         })
       }
 
-      // If we can't find billing_id, return error
-      return NextResponse.json(
-        { message: "Cadastro enviado, mas não foi possível obter o ID de cobrança" },
-        { status: 500 },
-      )
+      // If we can't find billing_id, still consider it a success
+      // as the registration was submitted to the external API
+      return NextResponse.json({
+        success: true,
+        message: "Cadastro realizado com sucesso",
+      })
     }
   } catch (error) {
     console.error("[v0] Erro no cadastro:", error)
