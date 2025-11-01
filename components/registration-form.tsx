@@ -11,8 +11,9 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Card, CardContent } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
 import ErrorModal from "@/components/error-modal"
+import SuccessModal from "@/components/success-modal"
 
-const REFERRAL_ID = "15354112082025084547" // Seu ID de indicação
+const REFERRAL_ID = "88389" // Seu ID de indicação
 
 const BRAZILIAN_STATES = [
   { value: "AC", label: "Acre" },
@@ -71,7 +72,7 @@ export default function RegistrationForm() {
   const [orderAmount, setOrderAmount] = useState<number>(0)
   const [cpfValidated, setCpfValidated] = useState(false)
   const [emailValidated, setEmailValidated] = useState(false)
-  const [showWelcomeVideo, setShowWelcomeVideo] = useState(false)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
 
   const [formData, setFormData] = useState({
     cpf: "",
@@ -307,14 +308,7 @@ export default function RegistrationForm() {
       const data = await response.json()
 
       if (response.ok) {
-        toast({
-          title: "Cadastro realizado com sucesso!",
-          description: "Aguarde...",
-        })
-
-        setTimeout(() => {
-          setShowWelcomeVideo(true)
-        }, 1000)
+        setShowSuccessModal(true)
       } else {
         if (response.status === 422 && data.errors) {
           const errorFields = Object.keys(data.errors)
@@ -366,24 +360,6 @@ export default function RegistrationForm() {
     return Object.values(PLANS).flat()
   }
 
-  useEffect(() => {
-    const video = document.createElement('video')
-    video.preload = 'auto'
-    video.src = 'https://myehbxfidszreorsaexi.supabase.co/storage/v1/object/public/adesao/adesao.mp4'
-    video.load()
-  }, [])
-
-  if (showWelcomeVideo) {
-    return (
-      <div className="fixed inset-0 z-50 bg-white">
-        <iframe
-          src="/welcome-video"
-          className="w-full h-full border-0"
-          title="Video de Boas-Vindas"
-        />
-      </div>
-    )
-  }
 
   return (
     <>
@@ -723,6 +699,7 @@ export default function RegistrationForm() {
       </form>
 
       <ErrorModal open={showErrorModal} onOpenChange={setShowErrorModal} message={errorMessage} />
+      <SuccessModal open={showSuccessModal} onOpenChange={setShowSuccessModal} />
     </>
   )
 }
